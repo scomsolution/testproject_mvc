@@ -7,7 +7,7 @@ namespace TEST_MVC_2
 {
     public class AccessModifiers
     {
-        //SUJEET no change
+        //SUJEET no change again
 
         //1. public access modifier
         public string name1 = "Sheeran";
@@ -39,11 +39,19 @@ namespace TEST_MVC_2
         private protected string name = "Sheeran";
     }
 
-    public class AccessModifiers2
+    public class Animal
     {
-
-        //4. internal access modifier
-        internal string name4 = "Sheeran";
+        public virtual void eat()
+        {
+            Console.WriteLine("eating...");
+        }
+    }
+    public class Dog : Animal
+    {
+        public override void eat()
+        {
+            Console.WriteLine("eating bread...");
+        }
 
     }
 
@@ -54,9 +62,18 @@ namespace TEST_MVC_2
 
         private void TestHere()
         {
-            string ss = access.;
+            //string ss = access.;
 
-            string ss1 = testClass.;
+            //string ss1 = testClass.;
+        }
+
+        public void TestPolymorphism()
+        {
+            Animal a1 = new Animal();
+            a1.eat();
+
+            Animal a2 = new Dog();
+            a2.eat();
         }
     }
 }

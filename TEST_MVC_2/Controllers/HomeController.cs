@@ -73,11 +73,4 @@ namespace TEST_MVC_2.Controllers
     }
 
 
-    public class TESTCLASS : AccessModifiers2
-    {
-        private void TestHere()
-        {
-
-        }
-    }
 }

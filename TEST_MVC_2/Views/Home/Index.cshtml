@@ -16,17 +16,23 @@
 
         @using (Html.BeginForm("Products", "Home", FormMethod.Post, new { id = "Form1" }))
         {
-            
+
             @Html.DropDownListFor(model => model.SubjectList, Model.SubjectList)
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" class="btn btn-default" value="Filter" />
-            </div>
-        </div>
-    }
+            @Html.DropDownList("OrderBy", new List<SelectListItem>
+                {
+                new SelectListItem{ Text="A-Z", Value = "1" },
+                new SelectListItem{ Text="Z-A", Value = "2" }
+                }, "-- Order By --", new { onchange = "document.getElementById('Form1').submit();" })
 
-    </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" class="btn btn-default" value="Filter" />
+                    </div>
+                </div>
+                }
+
+        </div>
     <div class="col-md-4">
         <h2>Getting started</h2>
         <p>

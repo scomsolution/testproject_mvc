@@ -5,3 +5,119 @@
 
 <h2>JQuery Get Post Example</h2>
 
+<form id="myForm">
+    <div class="row">
+        <div class="col-md-3">
+            <input type="text" id="txtID" class="form-control" name="ID" placeholder="ID" value="" />
+        </div>
+        <div class="col-md-3">
+            <input type="text" id="txtName" class="form-control" name="Name" placeholder="Name" value="" />
+        </div>
+        <div class="col-md-3">
+            <input type="text" id="txtState" class="form-control" name="State" placeholder="State" value="" />
+        </div>
+        <div class="col-md-3">
+            <input type="text" id="txtCity" class="form-control" name="City" placeholder="City" value="" />
+        </div>
+        <div class="col-md-3">
+            <div class="form-group">
+                <br />
+                <button type="button" class="btn btn-success" onclick="GetMethod();" id="btnSubmit">Submit-GET</button>
+                <br />
+                <button type="button" class="btn btn-success" onclick="PostMethod();" id="btnSubmit1">Submit-POST</button>
+            </div>
+        </div>
+
+        <div class="col-md-12" id="result">
+
+        </div>
+
+    </div>
+    </form>
+
+
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script>
+        $(document).ready(function () {
+
+
+            console.log("ready!");
+        });
+
+        function ClickOnMe() {
+            var ID = $("#txtID").val();
+            var Name = $("#txtName").val();
+            var State = $("#txtState").val();
+            var City = $("#txtCity").val();
+
+            console.log("ID : " + ID + "," + "Name : " + Name + "," + "State : " + State + "," + "City : " + City);
+
+        }
+
+        function ShowData(ID, Name, State, City) {
+            $("#txtID").val(ID);
+            $("#txtName").val(Name);
+            $("#txtState").val(State);
+            $("#txtCity").val(City);
+
+            console.log("ID : " + ID + "," + "Name : " + Name + "," + "State : " + State + "," + "City : " + City);
+
+        }
+
+        function GetMethod() {
+
+            $.get("/JQueryGetPost/DetailReturn", function (data, status) {
+                //alert("Data: " + JSON.stringify(data) + "\nStatus: " + status);
+
+                ShowData(data.ID, data.Name, data.State, data.City)
+            });
+
+
+        }
+
+        function PostMethodForClassObject() {
+
+            var url = "/JQueryGetPost/DetailReturn";
+            var data = { ID: "12", Name: "SINGH", State: "State1", City: "City1" };
+
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: data,
+                success: success,
+                dataType: "json"
+            });
+
+            function success(data) {
+                alert(JSON.stringify(data));
+            }
+        }
+
+
+        function PostMethod() {
+
+            var url = "/JQueryGetPost/DetailReturn2";
+            var data = $("#myForm").serialize();
+
+            // Send the form data using post
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: data,
+                success: successHere,
+                error: errorHere,
+                dataType: "json"
+            });
+
+            function successHere(data) {
+                alert(JSON.stringify(data));
+            }
+
+            function errorHere(data) {
+                alert(JSON.stringify(data));
+            }
+
+
+
+        }
+    </script>

@@ -1,0 +1,28 @@
+﻿@model TEST_MVC_2.Models.StateModel
+@{
+    ViewBag.Title = "DropdownList AutoPostback Functionality In MVC Using C#.Net";
+}
+
+
+<br />
+<br />
+
+<div class="row">
+    @using (Html.BeginForm("Index", "DropDown"))
+    {
+        <div class="col-lg-12">
+            @Html.DropDownListFor(model => model.StateId, new SelectList(Model.StateList, "Value", "Text"), new { @onchange = "this.form.submit();" })
+        </div>
+        <div class="col-lg-12">
+            <h3>  CITY AS PER STATE</h3>
+        </div>
+        foreach (var item in Model.CityList)
+        {
+            <div class="col-lg-3">
+                <b>City Name : </b> @item.CityName
+            </div>
+        }
+    }
+
+</div>
+

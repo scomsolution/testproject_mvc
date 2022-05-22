@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace TEST_MVC_2.Models
 {
@@ -18,5 +19,6 @@ namespace TEST_MVC_2.Models
         public int Mobile { get; set; }
         public string City { get; set; }
         public string State { get; set; }
+        public List<SelectListItem> SubjectList { get; set; }
     }
 }

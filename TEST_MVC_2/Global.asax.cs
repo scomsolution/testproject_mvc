@@ -47,8 +47,8 @@ namespace TEST_MVC_2
             Exception ex = Server.GetLastError();
             ErrorLogService.LogError(ex);
 
-            Response.Redirect("/error/");
-            Response.End();
+            //Response.Redirect("/error/");
+            //Response.End();
 
             ////Not Found (When user digit unexisting url)
             //if (ex is HttpException && ((HttpException)ex).GetHttpCode() == 404)
